@@ -1,0 +1,53 @@
+
+h2{
+    text-align: center;
+    font-size: 50px;
+}
+.head{
+    width: 100%;
+    height: 30px;
+    display: inline;
+    background-color: aqua;
+    color: red;
+    flex-wrap: flex;
+}
+.head h3{
+    text-align: end;
+}
+.home-section{
+    width: 100%;
+    height: 300px;
+    text-align: center;
+}
+.home-section button{
+    background-color: blue;
+    color: white;
+    margin-top: 5px;
+    font-size: 20px;
+}
+.home-section button:hover{
+    cursor: pointer;
+}
+.question-section{
+    width: 100% ;
+    height: 250px;
+    margin-left: 33%;
+}
+.final-section{
+    width: 100%;
+    height: 100px;
+    margin-left: 33%;
+}
+.final-section h2{
+    font-size: 30px;
+    text-align: left;
+}
+.final-section button{
+    margin-left: 10px;
+    background-color: blue;
+    color: white;
+    border-radius: 3px;
+}
+.final-section input{
+    margin-left: 5px;
+}
