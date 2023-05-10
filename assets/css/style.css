@@ -16,12 +16,16 @@ h2{
     text-align: end;
     padding-right: 20px;
 }
-.home-section{
+.container {
     width: 100%;
-    height: 200px;
+    height: 100%;
     text-align: center;
 }
-.home-section button{
+.home-section{
+   margin-top: 0;
+   margin-bottom: 0;
+}
+.home-section div button{
     background-color: blue;
     color: white;
     margin-top: 5px;
@@ -31,18 +35,19 @@ h2{
     cursor: pointer;
 }
 .question-section{
-    width: 100% ;
-    height: 200px;
-    margin-left: 33%;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.question-section li{
+    list-style-position: inside;
+    margin-right: 38%;
 }
 .final-section{
-    width: 100%;
-    height: 200px;
-    margin-left: 33%;
+    margin-top: 0;
+    margin-bottom: 0;
 }
-.final-section h2{
+.final-section div h2{
     font-size: 30px;
-    text-align: left;
 }
 .final-section button{
     margin-left: 10px;
@@ -52,4 +57,7 @@ h2{
 }
 .final-section input{
     margin-left: 5px;
+}
+.hide {
+    display: none;
 }
