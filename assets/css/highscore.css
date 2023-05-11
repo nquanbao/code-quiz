@@ -1,0 +1,33 @@
+.container{
+    background-color: aquamarine;
+    color: black;
+    text-align: center;
+    width: 50%;
+    height: 150px;
+    margin-top: 100px;
+    margin-left: 27%;
+    flex-direction: column;
+}
+ol{
+    text-align: center;
+    display: block;
+    flex-wrap: flex;
+    display: inline-block;
+}
+a{
+    padding: 10px;
+    background-color: blue;
+    color: white;
+    border-radius: 3px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+}
+button{
+    padding: 10px;
+    border-radius: 3px;
+    background-color: blue;
+    color: white;
+    display: inline-block;
+    cursor: pointer;
+}

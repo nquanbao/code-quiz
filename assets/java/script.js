@@ -16,14 +16,12 @@ var finalScore = document.querySelector(".final-score")
 var SubmitEl = document.querySelector("#submit")
 var InputInitial = document.querySelector("#input-initial")
 var recordEL = document.querySelector(".score")
-
-
-
+var highScores = JSON.parse(localStorage.getItem("UserRecord")) || [];
+console.log(highScores)
 //Variable for code
 var secondsLeft = 50;
 var score = 0;
 var currentQues = 0;
-var score1;
 
 // var UserRecord = {
 //     finalResult : score,
@@ -31,13 +29,12 @@ var score1;
 // }
 var questions = [
     {
-        question: "Inside which HTML element do we put the JavaScript?",
-        a: "<javascript>",
-        b: '<js>',
-        c: '<script>',
-        d: '<scripting>',
-        correct: 'c'
-
+        question: "How do you round the number 7.25, to the nearest whole number?",
+        a: 'Math.rnd(7.25)',
+        b: 'round(7.25)',
+        c: 'rnd(7.25)',
+        d: 'Math.round(7.25)',
+        correct: 'd'
     },
     {
         question: 'What is the correct JavaScript syntax to write "Hello World"?',
@@ -56,11 +53,11 @@ var questions = [
         correct: 'a'
     },
     {
-        question: 'What is the correct syntax for referring to an external script called "xxx.js"?',
-        a: '<script src="xxx.js">',
-        b: '<script name="xxx.js">',
-        c: '<script href="xxx.js">',
-        d: '<script value="xxx.js">',
+        question: 'How do you find the largest number of 2 and 4?',
+        a: 'Math.ceil(2,4)',
+        b: 'Math.max(2,4)',
+        c: 'ceil(2,4)',
+        d: 'top(2,4)',
         correct: 'b'
     },
     {
@@ -180,17 +177,18 @@ nextEL.addEventListener('click', function(){
             finalSection.classList.remove('hide')
             questionSection.classList.add('hide')
             finalScore.innerHTML= "Your score is " + score;
-            score1 = score;
+            return;
         }
     }
     console.log("score is  "+ score)
 })
-function saveRecord(){
-    var UserRecord = {
-        finalResult : score1,
-        initial: InputInitial.value,
+var saveRecord = function(e) {
+    var userRecord = {
+        score1: score,
+        initial: InputInitial.value
     }
-    localStorage.setItem("UserRecord",JSON.stringify(UserRecord));
+    highScores.push(userRecord)
+    localStorage.setItem("UserRecord", JSON.stringify(highScores))
 }
 
 //Submit button 
@@ -202,5 +200,4 @@ SubmitEl.addEventListener('click', function(e) {
     secondsLeft = 50;
     score = 0;
     currentQues = 0;
-    return;
 })
