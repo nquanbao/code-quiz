@@ -8,49 +8,52 @@
 </head>
 <body>
     <section class="head">
-        <a href="#" alt="High Scores">High Scores</a>
+        <a href="../html/highScore.html" alt="High Scores">High Scores</a>
         <h3 class="time">Time : 50</h3>
     </section>
-    <div>
-        <section class="home-section">
-            <div>
-                <h3>Coding Quiz Challenge</h3>
-                <p>Try to answer the following code-related questions within the time limit.</p>
-                <p>Keep in mind that incorrect answers will penalize your score/time</p>
-                <p>by ten seconds!</p>
-                <a href="#container-question" class ="start-quiz">Start Quiz</a>
-            </div>
-        </section>
-       <section id="container-question" class="question-section hide">
-            <h2 class="question"></h2>
-            <div>
-                <ul>
-                    <li>
-                        <input type="radio" name="answer" id="a" class="answer">
-                        <label for="a" id="a-text">Answer</label>
-                    </li>
-                    <li>
-                        <input type="radio" name="answer" id="b" class="answer">
-                        <label for="b" id="b-text">Answer</label>
-                    </li>
-                    <li>
-                        <input type="radio" name="answer" id="c" class="answer">
-                        <label for="c" id="c-text">Answer</label>
-                    </li>
-                    <li>
-                        <input type="radio" name="answer" id="d" class="answer">
-                        <label for="d" id="d-text">Answer</label>
-                    </li>
-                </ul>
-                <h3 id="result"></h3>
-                <button id="next">Next</button>
-            </div>
-       </section>
-        <section class="final-section hide">
-            <h2>All done</h2>
-            <h3 class="final-score">Your final score is 0</h3>
-            <h3>Enter initials:<input id="input-initial"><button id="submit">Submit</button></h3>
-        </section>
-    </div>
+    <section class="home-section">
+        <div>
+            <h3>Coding Quiz Challenge</h3>
+            <p>Try to answer the following code-related questions within the time limit.</p>
+            <p>Keep in mind that incorrect answers will penalize your score/time</p>
+            <p>by ten seconds!</p>
+            <a href="#container-question" class ="start-quiz">Start Quiz</a>
+        </div>
+    </section>
+    <section id="container-question" class="question-section hide">
+        <h2 class="question"></h2>
+        <div>
+            <ul>
+                <li>
+                    <input type="radio" name="answer" id="a" class="answer">
+                    <label for="a" id="a-text">Answer</label>
+                </li>
+                <li>
+                    <input type="radio" name="answer" id="b" class="answer">
+                    <label for="b" id="b-text">Answer</label>
+                </li>
+                <li>
+                    <input type="radio" name="answer" id="c" class="answer">
+                    <label for="c" id="c-text">Answer</label>
+                </li>
+                <li>
+                    <input type="radio" name="answer" id="d" class="answer">
+                    <label for="d" id="d-text">Answer</label>
+                </li>
+            </ul>
+            <h3 id="result"></h3>
+            <button id="next">Next</button>
+        </div>
+    </section>
+    <section class="final-section hide">
+        <h2>All done</h2>
+        <div>
+            <h3 class="final-score"></h3>
+            <label for="initial">Your initial is</label>
+            <input type ="text" name= "initial" id="input-initial" placeholder="your initial"/>
+            <a href="../html/highScore.html" id="submit"><button>Submit</button></a>
+        </div>
+    </section>
     <script src="../java/script.js"></script>
 </body>
+</html>

@@ -15,6 +15,7 @@ var finalSection = document.querySelector(".final-section")
 var finalScore = document.querySelector(".final-score")
 var SubmitEl = document.querySelector("#submit")
 var InputInitial = document.querySelector("#input-initial")
+var recordEL = document.querySelector(".score")
 
 
 
@@ -22,89 +23,93 @@ var InputInitial = document.querySelector("#input-initial")
 var secondsLeft = 50;
 var score = 0;
 var currentQues = 0;
-var scoreArray =[];
-var InitialArray = [];
+var score1;
+
+// var UserRecord = {
+//     finalResult : score,
+//     initial: InputInitial.value,
+// }
 var questions = [
     {
-        question: "question 1",
-        a: 'aaaa',
-        b: 'bbbb',
-        c: 'cccc',
-        d: 'dddd',
-        correct: 'b'
+        question: "Inside which HTML element do we put the JavaScript?",
+        a: "<javascript>",
+        b: '<js>',
+        c: '<script>',
+        d: '<scripting>',
+        correct: 'c'
 
     },
     {
-        question: "question 2",
-        a: 'aaaa',
-        b: 'bbbb',
-        c: 'cccc',
-        d: 'dddd',
+        question: 'What is the correct JavaScript syntax to write "Hello World"?',
+        a: 'response.write("Hello World")',
+        b: '"Hello World"',
+        c: 'document.write("Hello World")',
+        d: '("Hello World")',
+        correct: 'c'
+    },
+    {
+        question: "Where is the correct place to insert a JavaScript?",
+        a: 'Both the <head> section and the <body> section are correct',
+        b: 'The <body> section',
+        c: 'The <head> section',
+        d: 'None of them',
         correct: 'a'
     },
     {
-        question: "question 3",
-        a: 'aaaa',
-        b: 'bbbb',
-        c: 'cccc',
-        d: 'dddd',
-        correct: 'c'
-    },
-    {
-        question: "question 4",
-        a: 'aaaa',
-        b: 'bbbb',
-        c: 'cccc',
-        d: 'dddd',
+        question: 'What is the correct syntax for referring to an external script called "xxx.js"?',
+        a: '<script src="xxx.js">',
+        b: '<script name="xxx.js">',
+        c: '<script href="xxx.js">',
+        d: '<script value="xxx.js">',
         correct: 'b'
     },
     {
-        question: "question 5",
-        a: 'aaaa',
-        b: 'bbbb',
-        c: 'cccc',
-        d: 'dddd',
-        correct: 'b'
-    },
-    {
-        question: "question 6",
-        a: 'aaaa',
-        b: 'bbbb',
-        c: 'cccc',
-        d: 'dddd',
-        correct: 'd'
-    },
-    {
-        question: "question 7",
-        a: 'aaaa',
-        b: 'bbbb',
-        c: 'cccc',
-        d: 'dddd',
+        question: 'How do you write "Hello World" in an alert box?',
+        a: 'alert("Hello World")',
+        b: 'msgBox("Hello World")',
+        c: 'alertBox="Hello World"',
+        d: 'alertBox("Hello World")',
         correct: 'a'
     },
     {
-        question: "question 8",
-        a: 'aaaa',
-        b: 'bbbb',
-        c: 'cccc',
-        d: 'dddd',
+        question: "How do you create a function?",
+        a: 'function:myFunction()',
+        b: 'function=myFunction()',
+        c: 'function myFunction()',
+        d: 'myFunction():function',
         correct: 'c'
     },
     {
-        question: "question 9",
-        a: 'aaaa',
-        b: 'bbbb',
-        c: 'cccc',
-        d: 'dddd',
+        question: 'How do you call a function named "myFunction"?',
+        a: 'call myFunction()',
+        b: 'myFunction()',
+        c: 'call function myFunction',
+        d: 'Call.myFunction()',
+        correct: 'b'
+    },
+    {
+        question: 'How do you write a conditional statement for executing some statements only if "i" is equal to 5?',
+        a: 'if i==5 then',
+        b: 'if (i==5)',
+        c: 'if i=5 then',
+        d: 'if i=5',
+        correct: 'b'
+    },
+    {
+        question: 'How do you write a conditional statement for executing some statements only if "i" is NOT equal to 5?',
+        a: 'if (i != 5)',
+        b: 'if =! 5 then',
+        c: 'if (i <> 5)',
+        d: 'if <>5',
         correct: 'c'
     },
     {
-        question: "question 10",
-        a: 'aaaa',
-        b: 'bbbb',
-        c: 'cccc',
-        d: 'dddd',
-        correct: 'd'
+        question: 'How does a "for" loop start?',
+        a: 'for (i = 0; i <= 5)',
+        b: 'for (i = 0; i <= 5; i++)',
+        c: 'for i = 1 to 5',
+        d: 'for (i <= 5; i++)',
+        correct: 'b'
     }
 ]
 
@@ -120,8 +125,7 @@ function setTime() {
     },1000);
     question();
 }
-startQuizBtn.addEventListener("click",function(e){
-    e.preventDefault;
+startQuizBtn.addEventListener("click",function(){
     setTime();
     homeSection.classList.add('hide')
     questionSection.classList.remove('hide')
@@ -166,27 +170,37 @@ nextEL.addEventListener('click', function(){
     if (answer) {
         if(answer === questions[currentQues].correct) {
             score++;
+        }else {
+            secondsLeft = secondsLeft - 5;
         }
         currentQues++;
-        if(currentQues < questions.length){
+        if((currentQues < questions.length) && (secondsLeft > 0)){
             question();
         } else{
             finalSection.classList.remove('hide')
             questionSection.classList.add('hide')
             finalScore.innerHTML= "Your score is " + score;
+            score1 = score;
         }
     }
     console.log("score is  "+ score)
 })
+function saveRecord(){
+    var UserRecord = {
+        finalResult : score1,
+        initial: InputInitial.value,
+    }
+    localStorage.setItem("UserRecord",JSON.stringify(UserRecord));
+}
+
 //Submit button 
-SubmitEl.addEventListener('click', function() {
+SubmitEl.addEventListener('click', function(e) {
+    e.preventDefault();
+    saveRecord();
+    finalSection.classList.add('hide')
+    homeSection.classList.remove('hide')
     secondsLeft = 50;
     score = 0;
     currentQues = 0;
-    finalSection.classList.add('hide')
-    homeSection.classList.remove('hide')
     return;
 })
-console.log(scoreArray + InitialArray)
-localStorage.setItem("Initial",InitialArray)
-localStorage.setItem("score", scoreArray)
