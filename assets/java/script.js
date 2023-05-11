@@ -1,118 +1,112 @@
 //selects element from html file
 var timeEl = document.querySelector(".time");
-var buttonquizEl = document.querySelector(".start-quiz");
-var homeSectionEl = document.querySelector(".home-section");
-var questionSectionEl = document.querySelector(".question-section");
-var inputNameEl = document.querySelector(".final-section")
-var questionEl = document.querySelector(".question");
-var option1El = document.querySelector("#opt1");
-var option2El = document.querySelector("#opt2");
-var option3El = document.querySelector("#opt3");
-var option4El = document.querySelector("#opt4");
-var resultEL = document.querySelector('#result');
-var nextEl = document.querySelector('#next');
-var submitEl = document.querySelector('#submit');
-var finalScoreEl = document.querySelector(".final-score");
+var startQuizBtn = document.querySelector(".start-quiz")
+var homeSection = document.querySelector(".home-section")
+var questionSection = document.querySelector(".question-section")
+var answerEls = document.querySelectorAll(".answer")
+var questionEl = document.querySelector(".question")
+var aText = document.querySelector("#a-text")
+var bText = document.querySelector("#b-text")
+var cText = document.querySelector("#c-text")
+var dText = document.querySelector("#d-text")
+var nextEL = document.querySelector("#next")
+var resultEl = document.querySelector("#result")
+var finalSection = document.querySelector(".final-section")
+var finalScore = document.querySelector(".final-score")
+var SubmitEl = document.querySelector("#submit")
+var InputInitial = document.querySelector("#input-initial")
+
+
 
 //Variable for code
 var secondsLeft = 50;
 var score = 0;
-
+var currentQues = 0;
+var scoreArray =[];
+var InitialArray = [];
 var questions = [
     {
         question: "question 1",
-        answer: [
-            {a: "aaaaaa1", result: false},
-            {a: "bbbbbb1", result: false},
-            {a: "cccccc1", result: true},
-            {a: "dddddd1", result: false}
-        ]
+        a: 'aaaa',
+        b: 'bbbb',
+        c: 'cccc',
+        d: 'dddd',
+        correct: 'b'
+
     },
     {
         question: "question 2",
-        answer: [
-            {a: "aaaaaa2", result: false},
-            {a: "bbbbbb2", result: false},
-            {a: "cccccc2", result: true},
-            {a: "dddddd2", result: false}
-        ]
+        a: 'aaaa',
+        b: 'bbbb',
+        c: 'cccc',
+        d: 'dddd',
+        correct: 'a'
     },
     {
         question: "question 3",
-        answer: [
-            {a: "aaaaaa", result: false},
-            {a: "bbbbbb", result: false},
-            {a: "cccccc", result: true},
-            {a: "dddddd", result: false}
-        ]
+        a: 'aaaa',
+        b: 'bbbb',
+        c: 'cccc',
+        d: 'dddd',
+        correct: 'c'
     },
     {
         question: "question 4",
-        answer: [
-            {a: "aaaaaa", result: false},
-            {a: "bbbbbb", result: false},
-            {a: "cccccc", result: true},
-            {a: "dddddd", result: false}
-        ]
+        a: 'aaaa',
+        b: 'bbbb',
+        c: 'cccc',
+        d: 'dddd',
+        correct: 'b'
     },
     {
         question: "question 5",
-        answer: [
-            {a: "aaaaaa", result: false},
-            {a: "bbbbbb", result: false},
-            {a: "cccccc", result: true},
-            {a: "dddddd", result: false}
-        ]
+        a: 'aaaa',
+        b: 'bbbb',
+        c: 'cccc',
+        d: 'dddd',
+        correct: 'b'
     },
     {
         question: "question 6",
-        answer: [
-            {a: "aaaaaa", result: false},
-            {a: "bbbbbb", result: false},
-            {a: "cccccc", result: true},
-            {a: "dddddd", result: false}
-        ]
+        a: 'aaaa',
+        b: 'bbbb',
+        c: 'cccc',
+        d: 'dddd',
+        correct: 'd'
     },
     {
         question: "question 7",
-        answer: [
-            {a: "aaaaaa", result: false},
-            {a: "bbbbbb", result: false},
-            {a: "cccccc", result: true},
-            {a: "dddddd", result: false}
-        ]
+        a: 'aaaa',
+        b: 'bbbb',
+        c: 'cccc',
+        d: 'dddd',
+        correct: 'a'
     },
     {
         question: "question 8",
-        answer: [
-            {a: "aaaaaa", result: false},
-            {a: "bbbbbb", result: false},
-            {a: "cccccc", result: true},
-            {a: "dddddd", result: false}
-        ]
+        a: 'aaaa',
+        b: 'bbbb',
+        c: 'cccc',
+        d: 'dddd',
+        correct: 'c'
     },
     {
         question: "question 9",
-        answer: [
-            {a: "aaaaaa", result: false},
-            {a: "bbbbbb", result: false},
-            {a: "cccccc", result: true},
-            {a: "dddddd", result: false}
-        ]
+        a: 'aaaa',
+        b: 'bbbb',
+        c: 'cccc',
+        d: 'dddd',
+        correct: 'c'
     },
     {
         question: "question 10",
-        answer: [
-            {a: "aaaaaa10", result: false},
-            {a: "bbbbbb10", result: false},
-            {a: "cccccc10", result: true},
-            {a: "dddddd10", result: false}
-        ]
+        a: 'aaaa',
+        b: 'bbbb',
+        c: 'cccc',
+        d: 'dddd',
+        correct: 'd'
     }
 ]
-
-console.log(questions[0].question);
-console.log(questions[0].answer[0].a)
 
 //Timer funtion
 function setTime() {
@@ -124,82 +118,75 @@ function setTime() {
             timeEl.textContent = "Time: " + secondsLeft;
         }
     },1000);
-    homeSectionEl.classList.add('hide');
-    questionSectionEl.classList.remove('hide');
-    inputValue(0);
+    question();
 }
-buttonquizEl.addEventListener("click", setTime);
-
-//Input funtion to input value for question section
-function inputValue (arr) {
-    resultEL.textContent ="";
-    var checkscore = false;
-    questionEl.textContent = questions[arr].question;
-    option1El.textContent = questions[arr].answer[0].a;
-    option2El.textContent = questions[arr].answer[1].a;
-    option3El.textContent = questions[arr].answer[2].a;
-    option4El.textContent = questions[arr].answer[3].a;
-    option1El.addEventListener("click", function(e){
-        e.preventDefault;
-        resultEL.textContent = questions[arr].answer[0].result;
-        checkscore = questions[arr].answer[0].result;
-        if (checkscore = true) {
-           score ++;
-           return;
-        }
-    });
-    option2El.addEventListener("click", function(e){
-        e.preventDefault;
-        resultEL.textContent = questions[arr].answer[1].result;
-        checkscore = questions[arr].answer[1].result;
-        if (checkscore = true) {
-           score ++;
-           return;
-        }
-    });
-    option3El.addEventListener("click", function(e){
-        e.preventDefault;
-        resultEL.textContent = questions[arr].answer[2].result;
-        checkscore = questions[arr].answer[2].result;
-        if (checkscore = true) {
-            score ++;
-            return;
-        }
-    });
-    option4El.addEventListener("click", function(e){
-        e.preventDefault;
-        resultEL.textContent = questions[arr].answer[3].result;
-        checkscore = questions[arr].answer[3].result;
-        if (checkscore = true) {
-            score ++;
-            return;
-        }
-    });
-    console.log("lan next " + arr + ": " + score);
-}
-
-var i =0;
-//Next button
-nextEl.addEventListener('click', function(e){
+startQuizBtn.addEventListener("click",function(e){
     e.preventDefault;
-    i++;
-    if(i === 10){
-        secondsLeft = 0;
-        setTime();
-        questionSectionEl.classList.add('hide');
-        inputNameEl.classList.remove('hide');
-        finalScoreEl.textContent = "Your final score is: " + score;
-        return;
-    }
-    inputValue(i);
+    setTime();
+    homeSection.classList.add('hide')
+    questionSection.classList.remove('hide')
 });
+//Funtion to load question
+function question () {
+    hideSelectAnswer()
+    var currentQuesData = questions[currentQues]
+    questionEl.innerHTML = currentQuesData.question
+    aText.innerHTML = currentQuesData.a
+    bText.innerHTML = currentQuesData.b
+    cText.innerHTML = currentQuesData.c
+    dText.innerHTML = currentQuesData.d
+}
 
-//Submit button
-submitEl.addEventListener('click', function () {
-    inputNameEl.classList.add('hide');
-    homeSectionEl.classList.remove('hide');
+function hideSelectAnswer (){
+    answerEls.forEach(answerEl => answerEl.checked = false)
+}
+
+function getselectAnswer () {
+   var answer;
+   answerEls.forEach (answerEl =>{
+        if(answerEl.checked){
+            answer = answerEl.id;
+        }
+   })
+   return answer
+}
+
+function checkAnswerResult () {
+    var checkAnswer = questions[currentQues].correct;
+    var answer1 = getselectAnswer();
+    if(checkAnswer === answer1){
+        resultEl.innerHTML = "Your answer is correct!"
+    } else {
+        resultEl.innerHTML = "Your answer is incorrect!"
+    }   
+}
+//Next button
+nextEL.addEventListener('click', function(){
+    var answer = getselectAnswer();
+    if (answer) {
+        if(answer === questions[currentQues].correct) {
+            score++;
+        }
+        currentQues++;
+        if(currentQues < questions.length){
+            question();
+        } else{
+            finalSection.classList.remove('hide')
+            questionSection.classList.add('hide')
+            finalScore.innerHTML= "Your score is " + score;
+        }
+    }
+    console.log("score is  "+ score)
+})
+//Submit button 
+SubmitEl.addEventListener('click', function() {
     secondsLeft = 50;
     score = 0;
-    timeEl.textContent = "Time : 50";
-    return i = 0;
+    currentQues = 0;
+    finalSection.classList.add('hide')
+    homeSection.classList.remove('hide')
+    return;
 })
+console.log(scoreArray + InitialArray)
+localStorage.setItem("Initial",InitialArray)
+localStorage.setItem("score", scoreArray)

@@ -10,33 +10,46 @@
     <section class="head">
         <a href="#" alt="High Scores">High Scores</a>
         <h3 class="time">Time : 50</h3>
-        <h2>Quiz</h2>
     </section>
-    <div class="container">
+    <div>
         <section class="home-section">
             <div>
                 <h3>Coding Quiz Challenge</h3>
                 <p>Try to answer the following code-related questions within the time limit.</p>
                 <p>Keep in mind that incorrect answers will penalize your score/time</p>
                 <p>by ten seconds!</p>
-                <button class ="start-quiz">Start Quiz</button>
+                <a href="#container-question" class ="start-quiz">Start Quiz</a>
             </div>
         </section>
-       <section class="question-section hide">
+       <section id="container-question" class="question-section hide">
             <h2 class="question"></h2>
-            <div class="question-option">
-                <button class="option" id="opt1"></button>
-                <button class="option" id="opt2"></button>
-                <button class="option" id="opt3"></button>
-                <button class="option" id="opt4"></button>
+            <div>
+                <ul>
+                    <li>
+                        <input type="radio" name="answer" id="a" class="answer">
+                        <label for="a" id="a-text">Answer</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="answer" id="b" class="answer">
+                        <label for="b" id="b-text">Answer</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="answer" id="c" class="answer">
+                        <label for="c" id="c-text">Answer</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="answer" id="d" class="answer">
+                        <label for="d" id="d-text">Answer</label>
+                    </li>
+                </ul>
+                <h3 id="result"></h3>
+                <button id="next">Next</button>
             </div>
-            <h3 id="result"></h3>
-            <button id="next">Next</button>
        </section>
         <section class="final-section hide">
             <h2>All done</h2>
             <h3 class="final-score">Your final score is 0</h3>
-            <h3>Enter initials:<input><button id="submit">Submit</button></h3>
+            <h3>Enter initials:<input id="input-initial"><button id="submit">Submit</button></h3>
         </section>
     </div>
     <script src="../java/script.js"></script>
