@@ -22,7 +22,6 @@ If your README is long, add a table of contents to make it easy for users to fin
 
 ## Installation
 
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
 #1 Create a repository on GitHub with README file then copy SSH code.
 #2 Create a folder on local computer and then do " Git clone <SHH code>"
 #3 Creat a index.html file, assets folder include css, images, and pdf folder.
@@ -31,13 +30,7 @@ What are the steps required to install your project? Provide a step-by-step desc
 #5 Update the change to GitHub again.
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
-
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
-
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
+Screenshot :
 ![alt sreenshot](assets/images/portfolio-screenshot.png)
 [deployed link](https://nquanbao.github.io/professional-portfolio/)
 ## Credits
