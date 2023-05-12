@@ -1,27 +1,16 @@
-var recordEL = document.querySelector(".score")
+var scorelistEl = document.querySelector(".score-list")
 var clearEl = document.querySelector(".clear")
-var liEL = document.createElement("li")
-var records = {
-    finalresult:[],
-    score: []
+var highScore = JSON.parse(localStorage.getItem("UserRecord")) || []
+var userscoreEls = document.querySelectorAll("#userscore")
+
+var list = highScore;
+console.log(list.length)
+for ( var i = 0; i < list.length; i++) {
+    var liEl = document.createElement('li')
+    liEl.innerHTML = list[i].initial + " - " + list[i].score1;
+    document.body.children[0].children[0].children[1].appendChild(liEl)
 }
-var count = 0;
-function showRecord(){
-    var record = JSON.parse(localStorage.getItem("UserRecord"))
-    document.body.children[0].children[1].appendChild(liEL)
-    if(record != null){
-       records.finalresult.push(record.finalResult)
-       records.score.push(record.initial)
-       count++
-    } else{
-        return;
-    }
-    console.log(records)
-}
-showRecord()
-for(var i = 0; i < count; i++) {
-    liEL.innerHTML = records.finalresult + " - " + records.score
-}
-clearEl.addEventListener("click",function(){
-    localStorage.clear();
+
+clearEl.addEventListener("click", function(){
+    localStorage.clear()
 })
