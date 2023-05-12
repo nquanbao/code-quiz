@@ -2,23 +2,36 @@
 .head{
     width: 100%;
     height: 30px;
-    display: inline;
-    background-color: aqua;
+    display: block;
     color: red;
-    flex-wrap: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 .head h3{
+    display: inline;
+    flex-wrap: flex;
     font-size: 20px;
-    text-align: end;
     padding-right: 20px;
+    margin-left: 90%;
+}
+.head a{
+    font-size: 30px;
+    margin-top: 50px;
 }
 .home-section{
     width: 600px;
+    height: 250px;
     text-align: center;
     background-color: aquamarine;
     color: black;
     margin-left: 30%;
     overflow: hidden;
+    margin-top: 50px;
+    font-size: 20px;
+}
+.home-section a{
+    background-color:antiquewhite;
+    color: black;
 }
 .home-section div button{
     background-color: blue;
@@ -33,12 +46,13 @@
    background-color: aquamarine;
    border-radius: 5px;
    box-shadow: 5px 5px 5px 5px gray;
-   width: 600px;
+   width: 700px;
+   margin-top: 50px;
    margin-left: 30%;
    overflow: hidden;
 }
 .question{
-    padding: 0;
+   padding: 10px;
 }
 .question-section li{
     font-size: 15px;
@@ -51,6 +65,7 @@
     padding: 0;
 }
 .question-section label{
+    font-size: 18px ;
     cursor: pointer;
 }
 .question-section button{
@@ -61,19 +76,22 @@
     font-weight: 200;
     margin: 5px;
     width: 100px;
+    margin-left: 45%;
     cursor: pointer;
     align-items: end;
 }
 .final-section{
     width: 600px;
-    text-align: center;
+    height: 200px;
     background-color: aquamarine;
     color: black;
     margin-left: 30%;
+    margin-top: 60px;
     overflow: hidden;
+    text-align: center;
 }
 .final-section div h2{
-    font-size: 30px;
+    font-size: 40px;
 }
 .final-section button{
     margin-left: 10px;
